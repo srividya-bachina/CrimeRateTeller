@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            margin: 5%;
+            padding: 5px;
+            margin-top: 0px;
+            background-color: #DCF5F1;
+            text-align: center;
+            }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Gallery</h1>
+      </div>
+    <div class="main">
+        <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+              <div class="bg-dark p-4">
+                <ul class="nav nav-pills nav-fill">
+                  <li class="nav-item">
+                    <a class="nav-item nav-link" href="{{ url_for('index') }}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link" href="{{ url_for('analysis') }}">Analysis</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link active" href="#">Gallery</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link" href="{{ url_for('emergencycontacts') }}">Emergency Contacts</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <nav class="navbar navbar-dark bg-dark">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button> 
+            </nav>
+        </div>
+        <div class="gallery">
+            {% for image_file in image_files %}
+            <img src="{{ url_for('static', filename='images/' + image_file) }}">
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

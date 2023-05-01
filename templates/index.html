@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Rate Teller</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+      body {
+        margin: 5%;
+        padding: 5px;
+        margin-top: 0px;
+        background-color: #ECF3BA;
+      }
+      #click{
+        background-color: #EF9595;
+        border-radius: 45%;
+        font-style: oblique;
+      }
+      #btn{
+        text-align: center;
+      }
+      .chart{
+        padding: 10%;
+        text-align: center;
+      }
+      .header{
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Crime Rate Teller</h1>
+    </div>
+    <div class="main">
+      <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+          <div class="bg-dark p-4">
+            <ul class="nav nav-pills nav-fill">
+              <li class="nav-item">
+                <a class="nav-item nav-link active" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-item nav-link" href="{{ url_for('analysis') }}">Analysis</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-item nav-link" href="{{ url_for('gallery') }}">Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-item nav-link" href="{{ url_for('emergencycontacts') }}">Emergency Contacts</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button> 
+        </nav>
+      </div>      
+      <div id="text">
+        <p>The 2015 statistics show the estimated rate of violent crime was 372.6 offenses per 100,000 inhabitants, and the property crime rate was 2,487.0 offenses per 100,000 inhabitants. The violent crime rate rose 3.1 percent compared with the 2014 rate, and the property crime rate declined 3.4 percent. <br>
+        </p>
+        <p>These and additional data are presented in the 2015 edition of the FBI’s annual report Crime in the United States. This publication, which is a statistical compilation of offense, arrest, and police employee data reported by law enforcement agencies voluntarily participating in the FBI’s Uniform Crime Reporting (UCR) Program, also includes limited federal crime reporting, human trafficking, and cargo theft data</p>
+        <br>
+        <p>
+          The UCR Program collects information on crimes reported by law enforcement agencies regarding the violent crimes of murder and nonnegligent manslaughter, rape, robbery, and aggravated assault as well as the property crimes of burglary, larceny-theft, motor vehicle theft, and arson. (Although the FBI classifies arson as a property crime, it does not estimate arson data because of variations in the level of participation by the reporting agencies. Consequently, arson data are not included in the property crime estimate.) The program also collects arrest data for the offenses listed above plus 20 offenses that include all other crimes except traffic violations.
+          <br> 
+        </p>
+        <p>
+          <I>Interested in knowing more about the crimes in US. You are welcome!</I>
+        </p>
+      </div>
+      <div id="btn">
+        <a href="{{ url_for('go_to_analysis') }}" ><button id= "click"class=grey>Click Me!</button></a>
+      </div>
+      <div id="chart1" class="chart">
+        <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>    
+        <script type="text/javascript">
+          (async function(vegaEmbed) {
+            var response = await fetch("line.json");
+            var spec = await response.json();
+            var embedOpt= {"mode": "vega-lite"};
+            function showError(el, error){
+              el.innerHTML = ('<div class="error" style="color:red;">'
+                            + '<p>JavaScript Error: ' + error.message + '</p>'
+                            + "<p>This usually means there's a typo in your chart specification. "
+                            + "See the javascript console for the full traceback.</p>"
+                            + '</div>');
+              throw error;
+            }
+            const el = document.getElementById('chart1');
+            vegaEmbed("#chart1", spec, embedOpt)
+              .catch(error => showError(el, error));
+          })(vegaEmbed);
+        </script>
+      </div>
+      <div class="text">
+        <p>The graph above shows us the crime rate percapita overall from 1975 to 2015. 
+          Each line indicates a city. By this graph we can compare all the cities. Miami in florida recorded the highest crime percapita (4352.83) till now in 1990.
+          The city that is highest in crime percapita in 2015 is St. Louis in Missouri (1817.12).
+          The lowest crime percapita is observed by Fairfax county of Virginia which is 16.49 in 2000.
+          However in 2015, lowest being the same county, which is 88.41.
+          By the overall graph we can observe that crime percapita has increased from 1984 to 1995.
+          From then on, it has been gradually decreasing till 2015.
+          However, there is no much difference comparing years 1975 and 2015.</p>
+      </div>
+      <div id="chart2" class="chart">
+        <script type="text/javascript">
+          (async function(vegaEmbed) {
+            var response = await fetch("bar.json");
+            var spec = await response.json();
+            var embedOpt= {"mode": "vega-lite"};
+            function showError(el, error){
+              el.innerHTML = ('<div class="error" style="color:red;">'
+                            + '<p>JavaScript Error: ' + error.message + '</p>'
+                            + "<p>This usually means there's a typo in your chart specification. "
+                            + "See the javascript console for the full traceback.</p>"
+                            + '</div>');
+              throw error;
+            }
+            const el = document.getElementById('chart2');
+            vegaEmbed("#chart2", spec, embedOpt)
+              .catch(error => showError(el, error));
+          })(vegaEmbed);
+        </script>
+      </div>
+      <div class="text">
+        <p>This graph shows us the total number of crimes recorded and its types among different states of US from 1975 to 2015.
+            From this graph, we can observe that New York has the highest crimes recorded till now and Utah being the lowest.
+            California is the second highest and Kentucky is the second lowest.
+            From the above graph, we can also observe that assaults and robberies as the highest recorded crimes and homicides and rapes are lowest when compared to others.
+        </p>
+      </div>
+      <div id="chart3" class="chart">
+        <script type="text/javascript">
+          (async function(vegaEmbed) {
+            var response = await fetch("pie.json");
+            var spec = await response.json();
+            var embedOpt= {"mode": "vega-lite"};
+            function showError(el, error){
+              el.innerHTML = ('<div class="error" style="color:red;">'
+                            + '<p>JavaScript Error: ' + error.message + '</p>'
+                            + "<p>This usually means there's a typo in your chart specification. "
+                            + "See the javascript console for the full traceback.</p>"
+                            + '</div>');
+              throw error;
+            }
+            const el = document.getElementById('chart3');
+            vegaEmbed("#chart3", spec, embedOpt)
+              .catch(error => showError(el, error));
+          })(vegaEmbed);
+        </script>
+      </div>
+      <div class="text">
+        <p>
+          This pie chart shows the percentage of crimes recorded from 1975 to 2015.
+          In all the crimes that are recorded in 62 jurisdictions from 1975 to 2015, 49.24% are assaults, 44.71% are robberies, 4.65% are rapes and 1.4% are homicides.
+        </p>
+      </div>
+      <div id="chart4" class="chart">
+        <script type="text/javascript">
+          (async function(vegaEmbed) {
+            var response = await fetch("scatter.json");
+            var spec = await response.json();
+            var embedOpt= {"mode": "vega-lite"};
+            function showError(el, error){
+              el.innerHTML = ('<div class="error" style="color:red;">'
+                            + '<p>JavaScript Error: ' + error.message + '</p>'
+                            + "<p>This usually means there's a typo in your chart specification. "
+                            + "See the javascript console for the full traceback.</p>"
+                            + '</div>');
+              throw error;
+            }
+            const el = document.getElementById('chart4');
+            vegaEmbed("#chart4", spec, embedOpt)
+              .catch(error => showError(el, error));
+          })(vegaEmbed);
+        </script>
+      </div>
+      <div class="text">
+        <p>
+          The above graphs shows the scatter plot of population and crime percapita. 
+          By observing the above graph, we can say that there is no particular trend between population and crime percapita.
+          In the above graph, each color represents a city and each size represents bin size of crime percapita.
+        </p>
+      </div>
+    </div>
+    <script>
+      function URLRedirect(){
+      windows.location.href="{{ url_for('analysis') }}";
+      }
+    </script>   
+  </body>
+</html>

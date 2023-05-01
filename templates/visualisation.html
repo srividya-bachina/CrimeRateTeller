@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #b9f6d4;
+            text-align: center;
+            margin: 5%;
+            padding: 5px;
+            margin-top: 0px;
+        }
+        .chart{
+        padding: 10%;
+        text-align: center;
+        }
+        #map-container {
+            height: 500px;
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Results</h1>
+      </div>
+    <div class="main">
+        <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+              <div class="bg-dark p-4">
+                <ul class="nav nav-pills nav-fill">
+                  <li class="nav-item">
+                    <a class="nav-item nav-link" href="{{ url_for('index') }}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link active" href="{{ url_for('analysis') }}">Analysis</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link" href="{{ url_for('gallery') }}">Gallery</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link" href="{{ url_for('emergencycontacts') }}">Emergency Contacts</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <nav class="navbar navbar-dark bg-dark">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button> 
+            </nav>
+        </div>
+        <div id="map_container">
+            <div id="map" class="chart">
+                {{ map_html | safe}}
+            </div>
+        </div>
+        <div>
+            <p>
+                The map shows all the jurisdiction of the selected state that are present in the database.
+            </p>
+        </div>
+        <div id="chart2" class="chart">
+            <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+            <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+            <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+            <script type="text/javascript">
+                (async function(vegaEmbed) {
+                    var response = await fetch("dynamic_line.json");
+                    var spec = await response.json();
+                    var embedOpt= {"mode": "vega-lite"};
+                    function showError(el, error){
+                        el.innerHTML = ('<div class="error" style="color:red;">'
+                                    + '<p>JavaScript Error: ' + error.message + '</p>'
+                                    + "<p>This usually means there's a typo in your chart specification. "
+                                    + "See the javascript console for the full traceback.</p>"
+                                    + '</div>');
+                        throw error;
+                    }
+                    const el = document.getElementById('chart2');
+                    vegaEmbed("#chart2", spec, embedOpt)
+                        .catch(error => showError(el, error));
+                })(vegaEmbed);
+            </script>
+        </div>
+        <div>
+            <p>
+                The above line graph is between the total crimes recorded in the selected city of the selected state between the selected years. The bar graph down shows the crimes recorded for each type.
+                You can select a pericular interval from the line graph and observe how the bar graph is changing.
+            </p>
+        </div>
+        <div id="chart3" class="chart">
+            <script type="text/javascript">
+                (async function(vegaEmbed) {
+                    var response = await fetch("area.json");
+                    var spec = await response.json();
+                    var embedOpt= {"mode": "vega-lite"};
+                    function showError(el, error){
+                        el.innerHTML = ('<div class="error" style="color:red;">'
+                                    + '<p>JavaScript Error: ' + error.message + '</p>'
+                                    + "<p>This usually means there's a typo in your chart specification. "
+                                    + "See the javascript console for the full traceback.</p>"
+                                    + '</div>');
+                        throw error;
+                    }
+                    const el = document.getElementById('chart3');
+                    vegaEmbed("#chart3", spec, embedOpt)
+                        .catch(error => showError(el, error));
+                })(vegaEmbed);
+            </script>
+        </div>
+        <div>
+            <p>
+                The above graph shows the stacked area graph of percapita of different crimes in the selected time period of selected state.
+            </p>
+        </div>
+        <h3>Want to know the crime rate of other cities in this state?</h3>
+        <div id="chart4" class="chart">
+            <script type="text/javascript">
+                (async function(vegaEmbed) {
+                    var response = await fetch("nearby.json");
+                    var spec = await response.json();
+                    var embedOpt= {"mode": "vega-lite"};
+                    function showError(el, error){
+                        el.innerHTML = ('<div class="error" style="color:red;">'
+                                    + '<p>JavaScript Error: ' + error.message + '</p>'
+                                    + "<p>This usually means there's a typo in your chart specification. "
+                                    + "See the javascript console for the full traceback.</p>"
+                                    + '</div>');
+                        throw error;
+                    }
+                    const el = document.getElementById('chart4');
+                    vegaEmbed("#chart4", spec, embedOpt)
+                        .catch(error => showError(el, error));
+                })(vegaEmbed);
+            </script>
+        </div>
+        <div>
+            The above graph shows the total violent crimes recorded in other jurisdictions of the selected state.
+        </div>
+    </div>
+</body>
+</html>

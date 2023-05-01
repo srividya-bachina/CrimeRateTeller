@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crime Visualization</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='filters.css')}}" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <script>
+            $( function() {
+                $( "#slider-range" ).slider({
+                    range: true,
+                    min: 1975,
+                    max: 2015,
+                    values: [ 1980, 2005 ],
+                    slide: function( event, ui ) {
+                        $( "#years" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+                        $("#years_min").val(ui.values[0]);
+                        $("#years_max").val(ui.values[1]);
+                    }
+                });
+                $( "#years" ).val($( "#slider-range" ).slider( "values", 0 ) +
+                " - " + $( "#slider-range" ).slider( "values", 1 ) );
+            } );
+        </script>
+        <style>
+            body {
+                margin: 5%;
+                padding: 5px;
+                margin-top: 0px;
+                background-color: #DCF5F1;
+                text-align: center;
+            }
+            .slider {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            #filters {
+                padding: 5%;
+            }
+            button{
+                background-color: #4DAF59;
+                border-radius: 4%;
+                font-style: oblique;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Crime Visualization</h1>
+        <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+              <div class="bg-dark p-4">
+                <ul class="nav nav-pills nav-fill">
+                  <li class="nav-item">
+                    <a class="nav-item nav-link" href="{{ url_for('index') }}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link active" href="#">Analysis</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link" href="{{ url_for('gallery') }}">Gallery</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link" href="{{ url_for('emergencycontacts') }}">Emergency Contacts</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <nav class="navbar navbar-dark bg-dark">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button> 
+            </nav>
+        </div>
+        <form id="filters" action="{{ url_for('submit_form') }}" method = "post">   
+            <div class="slider">
+                <label for="years">Years:</label>
+                <input type="text" id="years" name="years" readonly style="border:0; color:black; font-weight:bold; background-color: #DCF5F1;">
+                <div id="slider-range"></div>
+            </div>
+            <div>
+                <input type="hidden" id="years_min" name="years_min" value="1980">
+                <input type="hidden" id="years_max" name="years_max" value="2005">
+            </div>
+            <br><br>
+            <div>    
+                State: 
+                <select name="state" id="state">
+                    <option value="" selected="selected">Select state</option>
+                </select>
+                <br><br>
+            </div> 
+            <div>     
+                City: 
+                <select name="city" id="city">
+                    <option value="" selected="selected">Please select state first</option>
+                </select>
+                <br><br>
+            </div>
+            <div>
+                <button type="submit" value="submit">Apply Filters</button>
+            </div>            
+        </form>
+        <script>
+            var state_jurisdiction_map = {
+                    'AZ': ['Mesa', 'Phoenix', 'Tucson'],
+                    'CA': ['Fresno', 'Long Beach', 'Los Angeles County', 'Los Angeles', 'Oakland', 'Sacramento', 'San Diego', 'San Francisco', 'San Jose'],
+                    'CO': ['Aurora', 'Denver'],
+                    'FL': ['Jacksonville', 'Miami-Dade County', 'Miami', 'Orlando', 'Tampa'],
+                    'GA': ['Atlanta'],
+                    'HI': ['Honolulu'],
+                    'IL': ['Chicago'],
+                    'IN': ['Indianapolis'],
+                    'KS': ['Wichita'],
+                    'KY': ['Louisville'],
+                    'LA': ['New Orleans'],
+                    'MD': ['Baltimore County', 'Baltimore', 'Montgomery County', 'Prince Georges County'],
+                    'MA': ['Boston'],
+                    'MI': ['Detroit'],
+                    'MN': ['Minneapolis'],
+                    'MO': ['Kansas City', 'St. Louis'],
+                    'NE': ['Omaha'],
+                    'NV': ['LasVegas'],
+                    'NJ': ['Newark'],
+                    'NM': ['Albuquerque'],
+                    'NY': ['Buffalo', 'Nassau County', 'New York City', 'Suffolk County'],
+                    'NC': ['Charlotte', 'Raleigh'],
+                    'OH': ['Cincinnati', 'Cleveland'],
+                    'OK': ['Oklahoma City', 'Tulsa'],
+                    'OR': ['Portland'],
+                    'PA': ['Philadelphia', 'Pittsburgh'],
+                    'TN': ['Memphis', 'Nashville'],
+                    'TX': ['Arlington', 'Austin', 'Dallas', 'El Paso', 'Fort Worth', 'Houston', 'San Antonio'],
+                    'UT': ['SaltLakeCity'],
+                    'VA': ['Norfolk', 'Richmond', 'Virginia Beach'],
+                    'WA': ['Seattle', 'Spokane'],
+                    'WI': ['Milwaukee']
+                }
+            window.onload = function() {
+              var stateSel = document.getElementById("state");
+              var citySel = document.getElementById("city");
+              for (var x in state_jurisdiction_map) {
+                stateSel.options[stateSel.options.length] = new Option(x, x);
+              }
+              stateSel.onchange = function() {
+                //empty Chapters- and Topics- dropdowns
+                citySel.length = 1;
+                //display correct values
+                var z = state_jurisdiction_map[this.value];
+                for (var i = 0; i < z.length; i++) {
+                  citySel.options[citySel.options.length] = new Option(z[i], z[i]);
+                }
+              }
+            }
+        </script>                    
+    </body>
+</html>

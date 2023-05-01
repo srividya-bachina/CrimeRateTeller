@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Contacts</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.8/xlsx.full.min.js"></script>
+    <style>
+        body {
+            margin: 5%;
+            padding: 5px;
+            margin-top: 0px;    
+            background-color: #DCF5F1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Emergency Contacts</h1>
+      </div>
+    <div class="main">
+        <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+              <div class="bg-dark p-4">
+                <ul class="nav nav-pills nav-fill">
+                  <li class="nav-item">
+                    <a class="nav-item nav-link" href="{{ url_for('index') }}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link" href="{{ url_for('analysis') }}">Analysis</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link" href="{{ url_for('gallery') }}">Gallery</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link active" href="#">Emergency Contacts</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <nav class="navbar navbar-dark bg-dark">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button> 
+            </nav>
+        </div>
+        <div id="table">
+            <div id="emergencycontacts_28792" align=center x:publishsource="Excel">
+
+                <table border=0 cellpadding=0 cellspacing=0 width=332 style='border-collapse:
+                 collapse;table-layout:fixed;width:250pt'>
+                 <col width=194 >
+                 <col width=138 >
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 width=194 style='height:15.0pt;width:146pt'><b><i> Area</i></b></td>
+                  <td class=xl1528792 width=138 style='width:104pt'><b><i>Phone Number</i></b></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Albuquerque, N.M.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=albuquerque%20nm%20m%20police%20department%20phone%20number&amp;rlz=1C1UEAD_enUS1001US1001&amp;oq=Albuquerque%2C+N.M.+police+de&amp;aqs=chrome.4.69i57j33i160j33i299l2j33i22i29i30l4.7893j0j7&amp;sourceid=chrome&amp;ie=UTF-8&amp;tbs=lf:1,lf_ui:2&amp;tbm=lcl&amp;sxsrf=APwXEdehSWaEutbUkthcGYmmbIlynwwSEQ:1681658061879&amp;rflfq=1&amp;num=10&amp;rldimm=9981387806551383674&amp;lqi=Ci9hbGJ1cXVlcnF1ZSBubSBtIHBvbGljZSBkZXBhcnRtZW50IHBob25lIG51bWJlciICEAFI4Y7S0e2AgIAIWjIQAhADEAQYABgBGAMYBCIiYWxidXF1ZXJxdWUgbm0gbSBwb2xpY2UgZGVwYXJ0bWVudJIBEXBvbGljZV9kZXBhcnRtZW50mgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVU5CTW1OVWMyTlJFQUWqATwQASoXIhNtIHBvbGljZSBkZXBhcnRtZW50KAAyHxABIhtDa-zFsiKWgFgBCwtsSlTeDNDzYBNHNsZZMZjgAQA&amp;ved=2ahUKEwjitqW72K7-AhUhlWoFHcuHBNAQvS56BAgJEAE&amp;sa=X&amp;rlst=f">(505)
+                  761-8800</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Arlington, Texas</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=arlington%20texas%20police%20department%20phone%20number&amp;rlz=1C1UEAD_enUS1001US1001&amp;sxsrf=APwXEdfCeX47Oz6016_kVY1jUuiUS47_ow:1681658131431&amp;ei=DRE8ZKLtJLuwqtsPkqijsAM&amp;oq=arlington+texas+police+department+&amp;gs_lcp=Cgxnd3Mtd2l6LXNlcnAQARgAMgoIABCABBAUEIcCMgUIABCABDIFCAAQgAQyCggAEIAEEBQQhwIyCwguEIAEEMcBEK8BMgUIABCABDIFCAAQgAQyCwguEIAEEMcBEK8BMgYIABAWEB4yBggAEBYQHjoKCAAQRxDWBBCwAzoKCAAQigUQsAMQQzoKCC4QigUQsAMQQ0oECEEYAFDEBVjEBWDhEWgBcAF4AIABYogBYpIBATGYAQCgAQHIAQrAAQE&amp;sclient=gws-wiz-serp&amp;tbs=lf:1,lf_ui:2&amp;tbm=lcl&amp;rflfq=1&amp;num=10&amp;rldimm=17555079155626331978&amp;lqi=Ci5hcmxpbmd0b24gdGV4YXMgcG9saWNlIGRlcGFydG1lbnQgcGhvbmUgbnVtYmVyIgIQAUjR3sqxx5CAgAhaMxACEAMYABgBGAIYAyIhYXJsaW5ndG9uIHRleGFzIHBvbGljZSBkZXBhcnRtZW50KgIIA5IBEXBvbGljZV9kZXBhcnRtZW50mgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVU5QY1RWWWVFWkJFQUWqAToQASoVIhFwb2xpY2UgZGVwYXJ0bWVudCgAMh8QASIbQp_68VnPHNKHnn27MCwn14yZXxVGPEMFq21U4AEA&amp;ved=2ahUKEwixyLrc2K7-AhU1kmoFHXCRBCIQvS56BAgJEAE&amp;sa=X&amp;rlst=f">(817)
+                  459-5700</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Atlanta</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=atlanta%20police%20department%20phone%20number&amp;rlz=1C1UEAD_enUS1001US1001&amp;oq=Atlanta+police+department+&amp;aqs=chrome.3.69i57j0i512l2j0i20i263i512l2j0i512l5.11174j0j7&amp;sourceid=chrome&amp;ie=UTF-8&amp;tbs=lf:1,lf_ui:2&amp;tbm=lcl&amp;sxsrf=APwXEdf7Y7ude8c9wFoqO_P_eBS7O1z3Kg:1681658192941&amp;rflfq=1&amp;num=10&amp;rldimm=17539236041505359221&amp;lqi=CiZhdGxhbnRhIHBvbGljZSBkZXBhcnRtZW50IHBob25lIG51bWJlciICEAFIrcKPv-aAgIAIWisQARACGAAYARgCIhlhdGxhbnRhIHBvbGljZSBkZXBhcnRtZW50KgQIAxABkgERcG9saWNlX2RlcGFydG1lbnSqAToQASoVIhFwb2xpY2UgZGVwYXJ0bWVudCgAMh8QASIbTZPcssCFytClAR4Q9yqOveGz2y3Cn6RkvnE54AEA&amp;ved=2ahUKEwjq8OT52K7-AhXPmmoFHbmpAVMQvS56BAgJEAE&amp;sa=X&amp;rlst=f">(404)
+                  546-6900</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Aurora,colo.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=aurora%20colorado%20police%20department%20phone%20number&amp;rlz=1C1UEAD_enUS1001US1001&amp;sxsrf=APwXEdcBu5Ouw8MaT3ech6ZagnBQq-pWSA:1681658266453&amp;ei=hxE8ZOuAFOSqqtsPmZeOmAc&amp;oq=Aurora%2C+Colo.+police+department+ph&amp;gs_lcp=Cgxnd3Mtd2l6LXNlcnAQARgAMgYIABAWEB4yCAgAEIoFEIYDMggIABCKBRCGAzoKCAAQRxDWBBCwAzoECCMQJzoICAAQFhAeEAo6DQguEA0QsQMQgAQQ6gQ6CggAEA0QgAQQsQM6BwgAEA0QgAQ6DQgAEA0QgAQQsQMQsQM6GAguEA0QsQMQgAQQ6gQQ3AQQ3gQQ4AQYAToGCAAQHhANSgQIQRgAUMEBWOlwYIR-aAFwAXgAgAGdA4gB-RKSAQoxNy4xLjEuMS4xmAEAoAEByAEIwAEB2gEGCAEQARgU&amp;sclient=gws-wiz-serp&amp;tbs=lf:1,lf_ui:2&amp;tbm=lcl&amp;rflfq=1&amp;num=10&amp;rldimm=5449904971915958796&amp;lqi=Ci5hdXJvcmEgY29sb3JhZG8gcG9saWNlIGRlcGFydG1lbnQgcGhvbmUgbnVtYmVyIgIQAUjIpdK_5YCAgAhaMxACEAMYABgBGAIYAyIhYXVyb3JhIGNvbG9yYWRvIHBvbGljZSBkZXBhcnRtZW50KgIIA5IBEXBvbGljZV9kZXBhcnRtZW50mgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVU5sTWt0aVFqSjNSUkFCqgE5EAEqFSIRcG9saWNlIGRlcGFydG1lbnQoADIeEAEiGky9Jtilfc7zNscx2Q4FB3S-Frz95Gb8KcQL4AEA&amp;ved=2ahUKEwiD4euc2a7-AhXRnWoFHWLKAP4QvS56BAgJEAE&amp;sa=X&amp;rlst=f">(303)
+                  739-1800</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Austin , Texas</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Austin%2C+Texas+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcdzCp_6UiaVoJKrhFQ9Mn2y48HhQ%3A1681658273378&amp;ei=oRE8ZK3UFoupqtsP06mH4A8&amp;ved=0ahUKEwjtqJKg2a7-AhWLlGoFHdPUAfwQ4dUDCAk&amp;uact=5&amp;oq=Austin%2C+Texas+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMggIABCKBRCGAzIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzoECCMQJzoGCAAQCBAeUOP_B1jj_wdg-IsIaABwAHgAgAFAiAFxkgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">&nbsp;(512)
+                  974-5000</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Baltimore</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Baltimore+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEddCZxi0yHCpo7STOy0s7XGEJludQA%3A1681658409723&amp;ei=KRI8ZNniK-W2qtsP0eyXsAE&amp;ved=0ahUKEwiZm5Th2a7-AhVlm2oFHVH2BRYQ4dUDCAk&amp;uact=5&amp;oq=Baltimore+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAUQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGA1AAWABgighoAHAAeACAAUqIAUqSAQExmAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(443)
+                  263-2220</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Baltimore County, Md.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Baltimore+County%2C+Md.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdenkUnYUNFdsoYbcNufhxvNOjKThw%3A1681658487973&amp;ei=dxI8ZLeEO56iqtsPxrynoAs&amp;ved=0ahUKEwj3m7yG2q7-AhUekWoFHUbeCbQQ4dUDCAk&amp;uact=5&amp;oq=Baltimore+County%2C+Md.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEKIEMgUIABCiBDIFCAAQogQyBQgAEKIEMgUIABCiBDoECCMQJzoGCAAQBxAeOgYIABAFEB46BggAEAgQHjoICAAQigUQhgNQ6QZY6QZgkQ9oAHAAeACAAWuIAcMBkgEDMS4xmAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(410)
+                  887-0872</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Boston</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Boston%09+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdeMUgfPlyjpsQDZBYM5rJnBkgWBpw%3A1681658551141&amp;ei=txI8ZMadCLq2qtsPiMShwAU&amp;ved=0ahUKEwiG1cuk2q7-AhU6m2oFHQhiCFgQ4dUDCAk&amp;uact=5&amp;oq=Boston%09+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yBggAEAcQHjIGCAAQBRAeMgYIABAFEB4yBggAEAgQHjIGCAAQCBAeMggIABCKBRCGAzIICAAQigUQhgMyCAgAEIoFEIYDOgQIIxAnUN8HWN8HYN4OaABwAHgAgAGHAYgB0QGSAQMxLjGYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">(617)
+                  343-4633</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Buffalo, N.Y.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Buffalo%2C+N.Y.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdeymtXEXeIlcUbs6tjjvn0L-5jy3w%3A1681658651284&amp;ei=GxM8ZOP1EJKmqtsPtey9mAQ&amp;ved=0ahUKEwij76vU2q7-AhUSk2oFHTV2D0MQ4dUDCAk&amp;uact=5&amp;oq=Buffalo%2C+N.Y.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyCAghEKABEMMEUABYAGC5DWgAcAB4AIABW4gBW5IBATGYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">(716)
+                  851-4403</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl6628792 style='height:15.0pt'>Charlotte-Mecklenburg</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Charlotte-Mecklenburg%2C+N.C.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdc-lkhC5ZkdPxAToP9VbRRyys8gRA%3A1681658693715&amp;ei=RRM8ZN-hK4ClqtsPhZySsAo&amp;ved=0ahUKEwif2Mno2q7-AhWAkmoFHQWOBKYQ4dUDCAk&amp;uact=5&amp;oq=Charlotte-Mecklenburg%2C+N.C.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyCAghEKABEMMEOgQIIxAnUNMGWNMGYMYqaABwAHgAgAFiiAG4AZIBATKYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">(704)
+                  336-7600</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Chicago</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Chicago+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdfPd75MQpx_Ndv5IlzsujtV_JavkA%3A1681658735820&amp;ei=bxM8ZMLYMfumqtsP_r2E6A4&amp;ved=0ahUKEwiCzNP82q7-AhV7k2oFHf4eAe0Q4dUDCAk&amp;uact=5&amp;oq=Chicago+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yBggAEAUQHjIGCAAQBRAeMgYIABAFEB4yBggAEAUQHjIGCAAQBRAeMgYIABAFEB4yBggAEAUQHjIGCAAQCBAeOgQIIxAnUNQHWNQHYMsYaABwAHgAgAE9iAF2kgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">&nbsp;(312)
+                  746-6000</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Cincinnati</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Cincinnati+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdeQ4PdykZhyyJNU9jH6DzmyjF88bA%3A1681658884839&amp;ei=BBQ8ZOvkMoGeqtsP4La2yAM&amp;ved=0ahUKEwjr9trD267-AhUBj2oFHWCbDTkQ4dUDCAk&amp;uact=5&amp;oq=Cincinnati+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMggIABCKBRCGAzIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzoECCMQJzoGCAAQBxAeOgYIABAFEB46BggAEAgQHlDrB1jrB2DXDmgAcAB4AIABRYgBdJIBATKYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">(513)
+                  765-1212</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Cleveland</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Cleveland+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcTfRGthv-fIODzrgeXTunJzfeOrg%3A1681658934052&amp;ei=NhQ8ZJPbAqO5qtsPq_SiwAc&amp;ved=0ahUKEwiTzpbb267-AhWjnGoFHSu6CHgQ4dUDCAk&amp;uact=5&amp;oq=Cleveland+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjoECCMQJzoICAAQigUQhgM6BwgAEA0QgAQ6CAgAEAUQHhANOggIABAIEB4QDVDUCFjfKmCANmgAcAB4AIAB4gGIAb0EkgEFMy4xLjGYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">(281)
+                  592-2621</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Columbus, Ohio</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Columbus%2C+Ohio+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEde0GAllzcB_CLVFwr9iNoYbAsX44g%3A1681658984125&amp;ei=aBQ8ZKueB8WtqtsPwMWSOA&amp;ved=0ahUKEwir8obz267-AhXFlmoFHcCiBAcQ4dUDCAk&amp;uact=5&amp;oq=Columbus%2C+Ohio+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBwgAEA0QgAQyBggAEAgQHjIGCAAQCBAeMggIABCKBRCGAzIICAAQigUQhgMyCAgAEIoFEIYDOgYIABAHEB46CAgAEAgQBxAeUIgIWKoUYJYZaABwAHgAgAFoiAGEApIBAzIuMZgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(614)
+                  645-4545</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Dallas</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Dallas+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdclVQcWpFD9C72njysHW1UKBErLNg%3A1681660404253&amp;ei=9Bk8ZLuAD-OnqtsPyIKyiAQ&amp;ved=0ahUKEwi7ypyY4a7-AhXjk2oFHUiBDEEQ4dUDCAk&amp;uact=5&amp;oq=Dallas+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAUQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjIGCAAQCBAeOgQIIxAnOgcIABANEIAEOggIABCKBRCGA1DYB1jYB2DCDmgAcAB4AIABdogBsAGSAQMxLjGYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">&nbsp;(214)
+                  671-3001</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Denver</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Denver+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEddBvDxwIeeK14WQLgKHNrMu2V5D7A%3A1681660459022&amp;ei=Kxo8ZN5f36mq2w_9n76YBQ&amp;ved=0ahUKEwieoauy4a7-AhXflGoFHf2PD1MQ4dUDCAk&amp;uact=5&amp;oq=Denver+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yBggAEAgQHjIICAAQigUQhgMyCAgAEIoFEIYDOgQIIxAnOgYIABAFEB5Q4gVY4gVg1QtoAHAAeACAAUaIAXGSAQEymAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">&nbsp;(720)
+                  913-0400</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Detroit</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Detroit+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcZXSPu4C6DeEL9q-7F6OgHUUTeMA%3A1681660502287&amp;ei=Vho8ZMaPEau4qtsPzJ6EqAM&amp;ved=0ahUKEwjGkvzG4a7-AhUrnGoFHUwPATUQ4dUDCAk&amp;uact=5&amp;oq=Detroit+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yBggAEAcQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjIGCAAQCBAeOgQIIxAnOggIABCKBRCGA1CfB1ifB2D6DGgAcAB4AIABTYgBjwGSAQEymAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(313)
+                  596-2200</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>El Paso, Texas</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=El+Paso%2C+Texas+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdfOQKjPS6sjT6TSg5A5Yh5o2SynZw%3A1681660566937&amp;ei=lho8ZPnfONKkqtsPtpaP4AI&amp;ved=0ahUKEwj5gubl4a7-AhVSkmoFHTbLAywQ4dUDCAk&amp;uact=5&amp;oq=El+Paso%2C+Texas+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMggIABCKBRCGAzIICAAQigUQhgMyCAgAEIoFEIYDOgQIIxAnOgYIABAHEB46BggAEAgQHlDKB1jKB2DGDWgAcAB4AIABTogBkwGSAQEymAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(915)
+                  212-4000</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Fairfax County, Va.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Fairfax+County%2C+Va.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEddix0OokhEZ4F9--CESawp1e7FpMw%3A1681660596354&amp;ei=tBo8ZP-MFZ60qtsPj-6k-AU&amp;ved=0ahUKEwj_tunz4a7-AhUemmoFHQ83CV8Q4dUDCAk&amp;uact=5&amp;oq=Fairfax+County%2C+Va.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyCAghEKABEMMEMggIIRCgARDDBDoECCMQJzoFCAAQgAQ6CAgAEIoFEIYDUPcHWPcHYNkLaABwAHgAgAFZiAGvAZIBATKYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">&nbsp;(703)
+                  385-7924</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Fort Worth, Texas</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Fort+Worth%2C+Texas+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcFnC7XeJI3l9hcCH19Q7Hh5qt7Jg%3A1681660644302&amp;ei=5Bo8ZPuIErmzqtsPxsSk4Ao&amp;ved=0ahUKEwj7itiK4q7-AhW5mWoFHUYiCawQ4dUDCAk&amp;uact=5&amp;oq=Fort+Worth%2C+Texas+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMggIABCKBRCGAzIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGA1AAWABguwZoAHAAeACAAUaIAUaSAQExmAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(817)
+                  392-4222</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Fresno, Calif.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Fresno%2C+Calif.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcfKtMerN6EkXZ4oqtGxap5hM-MJg%3A1681660696759&amp;ei=GBs8ZJnaLb2GqtsPj-qoiA4&amp;ved=0ahUKEwiZxtmj4q7-AhU9g2oFHQ81CuEQ4dUDCAk&amp;uact=5&amp;oq=Fresno%2C+Calif.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEB4QDTIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzoECCMQJzoFCAAQgARQzQZYzQZg8w1oAHAAeACAAUyIAZABkgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(559)
+                  621-6500</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Honolulu</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Honolulu+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdfvX0FpSkVPEmnnW6HqB7DujHRUGA%3A1681660808451&amp;ei=iBs8ZKCZG6uzqtsPwfaC6A8&amp;ved=0ahUKEwig_frY4q7-AhWrmWoFHUG7AP0Q4dUDCAk&amp;uact=5&amp;oq=Honolulu+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yCAgAEIoFEIYDMggIABCKBRCGAzoECCMQJzoGCAAQHhANUIYIWIYIYIAXaABwAHgAgAFGiAFykgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(808)
+                  529-3111</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Houston</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Houston+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEde9_tz1ldKh0IcrRMEUfxrcfA5ZGg%3A1681660835335&amp;ei=oxs8ZMODFKasqtsPv8CrkAU&amp;ved=0ahUKEwiD4ePl4q7-AhUmlmoFHT_gClIQ4dUDCAk&amp;uact=5&amp;oq=Houston+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyCggAEIAEEBQQhwIyBggAEAcQHjIFCAAQgAQyBggAEAcQHjIGCAAQBRAeMgYIABAFEB4yBggAEAgQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHlAAWABgrQZoAHAAeACAATmIATmSAQExmAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(713)
+                  884-3131</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Indianapolis</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Indianapolis+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdclD-SwFuYt-1-XYMQ1k170ndfa6A%3A1681660966151&amp;ei=Jhw8ZODlCIS7qtsPtfCj2A0&amp;ved=0ahUKEwjgkJSk467-AhWEnWoFHTX4CNsQ4dUDCAk&amp;uact=5&amp;oq=Indianapolis+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAIEB4yBggAEAgQHjIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGA1AAWABgoQpoAHAAeACAAUuIAUuSAQExmAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(317)
+                  327-3811</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Jacksonville, Fl</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Jacksonville%2C+Fla.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdf6YDVCGzVWh05A0xaJ4AEw6YHjww%3A1681661005918&amp;ei=TRw8ZIrZN4G1qtsPsYKW8A4&amp;ved=0ahUKEwjKs4-3467-AhWBmmoFHTGBBe4Q4dUDCAk&amp;uact=5&amp;oq=Jacksonville%2C+Fla.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEB4QDTIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgM6BAgjECc6BggAEAgQHlDjBljjBmCBDGgAcAB4AIABUogBlAGSAQEymAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(904)
+                  630-7600</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Kansas City, Mo.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=%09Kansas+City%2C+Mo.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcAYcW67ib7ITjNW42lmqEk8wRExQ%3A1681661049541&amp;ei=eRw8ZMS5IIGzqtsP-be06Aw&amp;ved=0ahUKEwiE2vXL467-AhWBmWoFHfkbDc0Q4dUDCAk&amp;uact=5&amp;oq=%09Kansas+City%2C+Mo.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBAgAEB4yBggAEAgQHjIICAAQigUQhgMyCAgAEIoFEIYDOgQIIxAnOgYIABAeEA1Q8RxY8Rxg-CJoAHAAeACAAUqIAcIBkgEBM5gBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(816)
+                  234-5000</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Las Vegas</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Las+Vegas+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdepUSuGKiCkD_kUYarSFGD-ebJAHg%3A1681661098090&amp;ei=qhw8ZMiXBaixqtsP55ei4Aw&amp;ved=0ahUKEwjIlInj467-AhWomGoFHeeLCMwQ4dUDCAk&amp;uact=5&amp;oq=Las+Vegas+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yBggAEAcQHjIGCAAQBRAeMgYIABAIEB4yCAgAEIoFEIYDMggIABCKBRCGAzoECCMQJzoECAAQHlCqB1iqB2DuDWgAcAB4AIABTIgBkwGSAQEymAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(702)
+                  828-3347</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Long Beach, Calif.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Long+Beach%2C+Calif.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdfVP6E3tYbML_e_O21Y-NHrja31SQ%3A1681661138290&amp;ei=0hw8ZIWjEa-rqtsPk9mnoAE&amp;ved=0ahUKEwiF1J72467-AhWvlWoFHZPsCRQQ4dUDCAk&amp;uact=5&amp;oq=Long+Beach%2C+Calif.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEB4QDTIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgNQAFgAYLgGaABwAHgAgAFLiAFLkgEBMZgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(562)
+                  435-6711</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Los Angeles</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=%09Los+Angeles+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdc94zKSNhqZv3Kjspfh_0qU5A5MUA%3A1681661188290&amp;ei=BB08ZPOpEZe0qtsPq8CCiAQ&amp;ved=0ahUKEwjzu4qO5K7-AhUXmmoFHSugAEEQ4dUDCAk&amp;uact=5&amp;oq=%09Los+Angeles+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgUIABCABDIGCAAQBRAeMgYIABAFEB4yBggAEAgQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjIICAAQigUQhgM6BAgjECc6BggAEB4QDVCLB1iLB2C6EGgAcAB4AIABbIgBrgGSAQMxLjGYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">&nbsp;(213)
+                  484-3400</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Los Angeles County,
+                  Calif.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Los+Angeles+County%2C+Calif.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcM8GLfP74x_tm7KVu4rA11Gtlltg%3A1681661230517&amp;ei=Lh08ZLSfH-eyqtsP_euh4Ak&amp;ved=0ahUKEwi07pui5K7-AhVnmWoFHf11CJwQ4dUDCAk&amp;uact=5&amp;oq=Los+Angeles+County%2C+Calif.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyCgghEKABEMMEEAo6BAgjECc6BQgAEIAEOgYIABAFEB46BggAEAgQHjoICAAQigUQhgNQogdYogdgww1oAHAAeACAAWSIAaYBkgEDMS4xmAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(323)
+                  820-6700</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Louisville, Ky.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Louisville%2C+Ky.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcIJtIdVEFMVTE1AjQj0T_N2LxdiQ%3A1681661274505&amp;ei=Wh08ZJSrHrWyqtsP4YK8-Ak&amp;ved=0ahUKEwiUwJi35K7-AhU1mWoFHWEBD58Q4dUDCAk&amp;uact=5&amp;oq=Louisville%2C+Ky.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBAgAEB4yCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgMyCAgAEIoFEIYDUABYAGDfBWgAcAB4AIABS4gBS5IBATGYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">(502)
+                  574-7636</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Memphis, Tenn.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Memphis%2C+Tenn..+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdfcD7kSyHId1GMFftpnxc5BR0VB3w%3A1681661323942&amp;ei=ix08ZKyWOY-tqtsPpN2HkAk&amp;ved=0ahUKEwjsh-LO5K7-AhWPlmoFHaTuAZIQ4dUDCAk&amp;uact=5&amp;oq=Memphis%2C+Tenn..+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEB4QDTIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzoECCMQJzoECAAQHlDvBljvBmClEmgAcAB4AIABRogBiwGSAQEymAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(901)
+                  545-2677</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Mesa, Ariz.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Mesa%2C+Ariz..+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdc6Y6d6PaWNGI1kvIhXaMzl7XVEiQ%3A1681661379768&amp;ei=wx08ZIbELsytqtsPzNGZyAs&amp;ved=0ahUKEwjGsbHp5K7-AhXMlmoFHcxoBrkQ4dUDCAk&amp;uact=5&amp;oq=Mesa%2C+Ariz..+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEB4QDTIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgNQAFgAYNoFaABwAHgAgAFXiAFXkgEBMZgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(480)
+                  644-2211</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Miami</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Miami+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdek5e4FmHrHPqupey4vlV9LoOyGrg%3A1681661422601&amp;ei=7h08ZO6rJPmsqtsP7cer6Ak&amp;ved=0ahUKEwju2uf95K7-AhV5lmoFHe3jCp0Q4dUDCAk&amp;uact=5&amp;oq=Miami+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEAcQHjIGCAAQBxAeMgUIABCABDIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeOgcIIxCwAhAnOgYIABAeEA06CAgAEIoFEIYDUNYKWNYKYM4SaABwAHgAgAFJiAGJAZIBATKYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">&nbsp;(918)
+                  542-5585</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Miami-Dade County, Fla.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Miami-Dade+County%2C+Fla.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEddPrNtxSp3aAY1tds0EBD0TF1LSyQ%3A1681661468003&amp;ei=Gx48ZJHaPIOwqtsP6aKTaA&amp;ved=0ahUKEwjR07qT5a7-AhUDmGoFHWnRBA0Q4dUDCAk&amp;uact=5&amp;oq=Miami-Dade+County%2C+Fla.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyCgghEKABEMMEEApQAFgAYOgKaABwAHgAgAFfiAFfkgEBMZgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">:&nbsp;(305)
+                  876-7373</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Milwaukee</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Milwaukee+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdfDBncd3hFf6EzGtGu8qegh3b3zeQ%3A1681661509511&amp;ei=RR48ZKv2HqyqqtsPyqejsAo&amp;ved=0ahUKEwjrrKCn5a7-AhUslWoFHcrTCKYQ4dUDCAk&amp;uact=5&amp;oq=Milwaukee+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yBggAEAcQHjIGCAAQBRAeMgYIABAFEB4yBggAEAUQHjIGCAAQCBAeMggIABCKBRCGAzIICAAQigUQhgM6BwgjELACECdQ-wVY-wVg0A5oAHAAeACAAV2IAawBkgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(414)
+                  933-4444</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Minneapolis</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Minneapolis+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdeVQr-zpdeRc0-2JWItjkgcRmFS-w%3A1681661553176&amp;ei=cR48ZJeoCvuiqtsP5KG-uAI&amp;ved=0ahUKEwjXpIm85a7-AhV7kWoFHeSQDycQ4dUDCAk&amp;uact=5&amp;oq=Minneapolis+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yBggAEAgQHjIGCAAQCBAeMggIABCKBRCGAzIICAAQigUQhgNQAFgAYMkFaABwAHgAgAFNiAFNkgEBMZgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(612)
+                  673-5701</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Montgomery County, Md.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Montgomery+County%2C+Md.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcSZ2KF545oYlfEv2lYV51NB38HIQ%3A1681661591982&amp;ei=lx48ZOfPO6KuqtsP-Me7mA4&amp;ved=0ahUKEwin98nO5a7-AhUil2oFHfjjDuMQ4dUDCAk&amp;uact=5&amp;oq=Montgomery+County%2C+Md.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyCAghEKABEMMEOgQIIxAnOgYIABAHEB46BggAEAgQHjoICAAQigUQhgNQ9wdY9wdgwgtoAHAAeACAAVWIAZkBkgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(301)
+                  279-8000</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Nashville, Tenn.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Nashville%2C+Tenn.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEde1FRq8nYIFYsMTvKylJjRuHlHGDg%3A1681661766853&amp;ei=Rh88ZJzVM4ivqtsPnJCr0As&amp;ved=0ahUKEwickPuh5q7-AhWIl2oFHRzICroQ4dUDCAk&amp;uact=5&amp;oq=Nashville%2C+Tenn.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBAgjECcyBggAEBYQHjIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGA1AAWABg-gdoAHAAeACAAVGIAVGSAQExmAEAwAEB&amp;sclient=gws-wiz-local">&nbsp;(615)
+                  862-4410</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Nassau County, N.Y.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Nassau+County%2C+N.Y.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdfXksH3E_hjuXsGHX2zVpsol-Cgiw%3A1681661794922&amp;ei=Yh88ZKz2N5asqtsPuPmz4Ak&amp;ved=0ahUKEwisr6yv5q7-AhUWlmoFHbj8DJwQ4dUDCAk&amp;uact=5&amp;oq=Nassau+County%2C+N.Y.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEKIEMgUIABCiBDIFCAAQogQyBQgAEKIEOgQIIxAnOgYIABAeEA06CAgAEIoFEIYDUMsHWMsHYK8NaABwAHgAgAFciAGfAZIBATKYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">(516)
+                  573-6500</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>National</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=national+city+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEddwQN9XHJaIKaZWECAQvhgOthuYIg%3A1681661826206&amp;ei=gh88ZMueDMWtqtsPqvCPmAk&amp;oq=National+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAEYADIGCAAQBxAeMggIABCKBRCGAzIICAAQigUQhgMyCAgAEIoFEIYDOgQIIxAnUIQIWIQIYOBLaABwAHgAgAFHiAGGAZIBATKYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">(619)
+                  336-4411</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>New Orleans</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=New+Orleans+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcIbjaFCqfO0B4T_y2NV4WNH02yoA%3A1681661879529&amp;ei=tx88ZJHyH761qtsPwem-4Ag&amp;ved=0ahUKEwjRqdjX5q7-AhW-mmoFHcG0D4wQ4dUDCAk&amp;uact=5&amp;oq=New+Orleans+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yBggAEAgQHjIGCAAQCBAeMggIABCKBRCGAzIICAAQigUQhgMyCAgAEIoFEIYDOgQIIxAnUIwIWIwIYLkLaABwAHgAgAFTiAGZAZIBATKYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">&nbsp;(504)
+                  821-2222</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>New York City</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=New+York+City+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEde4CsjDnEvN0Pu1-7PXsx2i3p6vEA%3A1681661923433&amp;ei=4x88ZJuNGtemqtsPvbufuA4&amp;ved=0ahUKEwjbitDs5q7-AhVXk2oFHb3dB-cQ4dUDCAk&amp;uact=5&amp;oq=New+York+City+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAIEB4yBggAEAgQHjIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzoECCMQJzoGCAAQBxAeUJcHWJcHYPAMaABwAHgAgAFPiAGNAZIBATKYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">&nbsp;(646)
+                  610-5000</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Newark, N.J.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Newark%2C+N.J.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdfRME9FTyyIWUkvHwZIagzv7pRNiw%3A1681661963793&amp;ei=CyA8ZOiHMIO3qtsPtLWDoAQ&amp;ved=0ahUKEwioue__5q7-AhWDm2oFHbTaAEQQ4dUDCAk&amp;uact=5&amp;oq=Newark%2C+N.J.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyCAghEKABEMMEOgQIIxAnOgYIABAIEB46CAgAEIoFEIYDUO8HWO8HYNMPaABwAHgAgAFYiAGjAZIBATKYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">&nbsp;(973)
+                  733-3941</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Oakland, Calif.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Oakland%2C+Calif.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdf55oXJQw6RNTbEUXOGsK_oVUv_oA%3A1681662027432&amp;ei=SyA8ZP6AGu2mqtsPzvS4iAM&amp;ved=0ahUKEwi-0pue567-AhVtk2oFHU46DjEQ4dUDCAk&amp;uact=5&amp;oq=Oakland%2C+Calif.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEB4QDTIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgM6BAgjECdQpQtYpQtgzhJoAHAAeACAAUuIAZEBkgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(510)
+                  777-3333</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Oklahoma City</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Oklahoma+City+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdf5yV5QX-hcAsOfIJcfDLLYkFR7jQ%3A1681662072804&amp;ei=eCA8ZNHVMJSuqtsPguqq4As&amp;ved=0ahUKEwjR8eyz567-AhUUl2oFHQK1CrwQ4dUDCAk&amp;uact=5&amp;oq=Oklahoma+City+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAIEB4yCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgM6BAgjECc6BggAEB4QDVDIB1jIB2DoCmgAcAB4AIABR4gBhwGSAQEymAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(405)
+                  297-1000</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Omaha, Neb.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Omaha%2C+Neb.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdc9uEZyyTXhTtZUudNKs5ijLlsE_w%3A1681662101694&amp;ei=lSA8ZMX9KY21qtsPi-GzsA4&amp;ved=0ahUKEwiFnNDB567-AhWNmmoFHYvwDOYQ4dUDCAk&amp;uact=5&amp;oq=Omaha%2C+Neb.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEB4QDTIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgM6BAgjECc6BggAEAgQHjoHCCMQsAIQJzoICAAQCBAeEA1QrRRY1j9gskloAHAAeACAAV6IAecDkgEBN5gBAKABAaABAsABAQ&amp;sclient=gws-wiz-local">(402)
+                  444-5600</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Orlando, Fl</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Orlando%2C+Fla..+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdfQa1k__VSB5_zgvevTFTRLKR4mlQ%3A1681662154251&amp;ei=yiA8ZMr7DuyuqtsPrPmV4Ak&amp;ved=0ahUKEwjKiNja567-AhVsl2oFHax8BZwQ4dUDCAk&amp;uact=5&amp;oq=Orlando%2C+Fla..+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEB4QDTIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgM6BAgjECc6BggAEAcQHlDnB1jnB2C5CWgAcAB4AIABT4gBlQGSAQEymAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(321)
+                  235-5300</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Philadelphia</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Philadelphia+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdc_kYhVrzaDosUVwHX5hosfT1bq-w%3A1681662199756&amp;ei=9yA8ZLvgLeqjqtsPoZez8AY&amp;ved=0ahUKEwj7t7Hw567-AhXqkWoFHaHLDG4Q4dUDCAk&amp;uact=5&amp;oq=Philadelphia+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMggIABAHEB4QDzIGCAAQBRAeMggIABAFEAcQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjoECCMQJzoGCAAQHhANOggIABCKBRCGA1C8CFi8CGCeEWgAcAB4AIABTIgBhwGSAQEymAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(215)
+                  686-1776</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Phoenix</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Phoenix+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdceTN_Y4GJMEqE1buX7SmwAzunMIA%3A1681662257694&amp;ei=MSE8ZPn6KY60qtsPvIuRuAQ&amp;ved=0ahUKEwi514GM6K7-AhUOmmoFHbxFBEcQ4dUDCAk&amp;uact=5&amp;oq=Phoenix+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBwgAEA0QgAQyBggAEAcQHjIHCAAQDRCABDIGCAAQCBAeMgYIABAIEB4yCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgM6CAgAEAgQBxAeUABY6gdgowpoAHAAeACAAU-IAYcBkgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(602)
+                  262-6151</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Pittsburgh</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Pittsburgh+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcozSBlTTlOENHMQFbczfdebDFncg%3A1681662383604&amp;ei=ryE8ZOS7JM6lqtsP2KeOqAU&amp;ved=0ahUKEwikz4bI6K7-AhXOkmoFHdiTA1UQ4dUDCAk&amp;uact=5&amp;oq=Pittsburgh+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEAcQHjIGCAAQBRAeMggIABCKBRCGAzIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzoECCMQJzoHCAAQDRCABDoGCAAQCBAeOggIABAHEB4QCjoICAAQBRAHEB5Q6QZYgglgwAxoAHAAeACAAUaIAbwBkgEBM5gBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(412)
+                  244-3358</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Portland, Ore.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Portland%2C+Ore.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdeTwtgg-YTYUhFYZuylcUfB1vuSnQ%3A1681662425972&amp;ei=2SE8ZO7yOtioqtsPrrugiAw&amp;ved=0ahUKEwiuw6Dc6K7-AhVYlGoFHa4dCMEQ4dUDCAk&amp;uact=5&amp;oq=Portland%2C+Ore.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEB4QDTIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgM6BAgjECc6BggAEAcQHjoGCAAQBRAeUIkUWIkUYOweaABwAHgAgAFGiAGJAZIBATKYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">(503)
+                  823-3333</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Prince George's County,
+                  Md.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Prince+George%27s+County%2C+Md..+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdfS444OIdP8GbS1xqtfrACae0Dkiw%3A1681662495320&amp;ei=HyI8ZPqUE8a0qtsPgrKRkAE&amp;ved=0ahUKEwi6oKn96K7-AhVGmmoFHQJZBBIQ4dUDCAk&amp;uact=5&amp;oq=Prince+George%27s+County%2C+Md..+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEKIEMgUIABCiBDIFCAAQogQyBQgAEKIEOgcIIxCwAhAnOgYIABAHEB46CAgAEIoFEIYDULAJWLAJYO0OaABwAHgAgAFsiAGtAZIBAzEuMZgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(301)
+                  699-2630</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Raleigh, N.C.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Raleigh%2C+N.C.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdesqrjZmLr5KG_kslOrGpAdNRKNmA%3A1681662554309&amp;ei=WiI8ZJCnEoy0qtsPz5y_-Ag&amp;ved=0ahUKEwiQvLmZ6a7-AhUMmmoFHU_OD48Q4dUDCAk&amp;uact=5&amp;oq=Raleigh%2C+N.C.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEKIEMgUIABCiBDIFCAAQogQyBQgAEKIEOgQIIxAnUOcKWOcKYMQQaABwAHgAgAFtiAG5AZIBAzEuMZgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(919)
+                  996-3855</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Sacramento, Calif.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Sacramento%2C+Calif.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEddg6ihpVCq8a0jo28noS00RTbtYBQ%3A1681662606449&amp;ei=jiI8ZN-LG4SvqtsPoLO0mAM&amp;ved=0ahUKEwjfiqiy6a7-AhWEl2oFHaAZDTMQ4dUDCAk&amp;uact=5&amp;oq=Sacramento%2C+Calif.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEB4QDTIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgM6BAgjECdQvAhYvAhg_Q5oAHAAeACAAW2IAbgBkgEDMS4xmAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">&nbsp;(916)
+                  808-5471</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Salt Lake City</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Salt+Lake+City+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcSGukDPgjAv-ez7HyFwFwrvwN-CQ%3A1681662656037&amp;ei=wCI8ZMvgAcenqtsP1LOEoAs&amp;ved=0ahUKEwjLwPrJ6a7-AhXHk2oFHdQZAbQQ4dUDCAk&amp;uact=5&amp;oq=Salt+Lake+City+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yBggAEAgQHjIICAAQigUQhgMyCAgAEIoFEIYDOgYIABAeEA1QwwhYwwhgyQ5oAHAAeACAAUmIAY8BkgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(801)
+                  799-3000</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>San Antonio</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=San+Antonio+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdd8WMoRVfRcL3TD1zy16HMBuAHztg%3A1681662714283&amp;ei=-iI8ZJfyEI2oqtsPvqaLkA8&amp;ved=0ahUKEwiX193l6a7-AhUNlGoFHT7TAvIQ4dUDCAk&amp;uact=5&amp;oq=San+Antonio+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgUIABCABDIGCAAQCBAeMggIABCKBRCGAzoECCMQJzoGCAAQBxAeUIgJWIgJYN4RaABwAHgAgAFFiAGHAZIBATKYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">(210)
+                  207-7781</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>San Diego</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=%09San+Diego+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdfGNnzvE8JQU9QiCq_7q9V4ohNFcA%3A1681662756274&amp;ei=JCM8ZJm0ELOkqtsPhPOMqAk&amp;ved=0ahUKEwiZ1uD56a7-AhUzkmoFHYQ5A5UQ4dUDCAk&amp;uact=5&amp;oq=%09San+Diego+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yBggAEAUQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjIICAAQigUQhgM6BAgjECdQvAlYvAlg_hNoAHAAeACAAUqIAZEBkgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(361)
+                  279-3341</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>San Francisco</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=San+Francisco+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcWbpmw06PbfNrwBHccu8IVd-OUdg%3A1681662802940&amp;ei=UiM8ZN7-OJipqtsP4ceKuAg&amp;ved=0ahUKEwje74CQ6q7-AhWYlGoFHeGjAocQ4dUDCAk&amp;uact=5&amp;oq=San+Francisco+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAFEB4yBggAEAgQHjIGCAAQCBAeMggIABCKBRCGAzIICAAQigUQhgM6BAgjECc6BggAEAcQHlDvC1jvC2CvF2gAcAB4AIABUYgBlAGSAQEymAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(415)
+                  553-0123</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>San Jose</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=San+Jose+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcAznievjolAyVuEgMB5JJerDVqWw%3A1681662866850&amp;ei=kiM8ZIC0M6urqtsPxN-WuA4&amp;ved=0ahUKEwiAxb2u6q7-AhWrlWoFHcSvBecQ4dUDCAk&amp;uact=5&amp;oq=San+Jose+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAHEB4yBggAEAcQHjIGCAAQCBAeMgYIABAIEB4yCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzoECCMQJzoGCAAQBRAeUKsHWKsHYJgPaABwAHgAgAFHiAGLAZIBATKYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">(408)
+                  277-8900</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Seattle</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=%09Seattle+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdfOw46VaKZD_tzVta-kddHN0hFx0w%3A1681662916476&amp;ei=xCM8ZOTXHIi5qtsP6_6fuAc&amp;ved=0ahUKEwjkyZLG6q7-AhWInGoFHWv_B3cQ4dUDCAk&amp;uact=5&amp;oq=%09Seattle+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMgYIABAIEB4yCAgAEIoFEIYDOgQIIxAnOgYIABAHEB5QuAZYuAZgrw9oAHAAeACAAVKIAZUBkgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(206)
+                  625-5011</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>St. Louis, Mo.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=St.+Louis%2C+Mo.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdeD4df22BeLvQec3N2cWj8TJohZrA%3A1681662960666&amp;ei=8CM8ZMeoKPGoqtsP3diNuAw&amp;ved=0ahUKEwjH4Jvb6q7-AhVxlGoFHV1sA8cQ4dUDCAk&amp;uact=5&amp;oq=St.+Louis%2C+Mo.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBAgAEB4yBggAEAgQHjIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzoECCMQJ1DXCVjXCWCGEWgAcAB4AIABT4gBjgGSAQEymAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(314)
+                  444-0100</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Suffolk County, N.Y.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Suffolk+County%2C+N.Y..+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdc1BRZvAI3fxxywRFmDipmb0bqJ9w%3A1681663016085&amp;ei=KCQ8ZMLxBPyrqtsPr8mMmAc&amp;ved=0ahUKEwjCpdL16q7-AhX8lWoFHa8kA3MQ4dUDCAk&amp;uact=5&amp;oq=Suffolk+County%2C+N.Y..+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEKIEMgUIABCiBDIICAAQiQUQogQyBQgAEKIEMgUIABCiBDoECCMQJzoECAAQHjoGCAAQCBAeOggIABCKBRCGA1CaCFiaCGDaDmgAcAB4AIABY4gBoAGSAQEymAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(631)
+                  852-6000</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Tampa, Fl</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Tampa%2C+Fla.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEddVuEBGapbVduRhgNAm7dD-TGKe5Q%3A1681663046108&amp;ei=RiQ8ZMiZBvyrqtsPr8mMmAc&amp;ved=0ahUKEwjI1PqD667-AhX8lWoFHa8kA3MQ4dUDCAk&amp;uact=5&amp;oq=Tampa%2C+Fla.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEB4QDTIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgM6BAgjECdQhQhYhQhg_h5oAHAAeACAAVKIAY8BkgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(813)
+                  231-6130</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Tucson, Ariz.</td>
+                  <td class=xl6728792 width=138 style='width:104pt'><a
+                  href="https://www.google.com/search?q=Tucson%2C+Ariz.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcvtkVOMvto8lOqJh9MBjWhFYTQ8w%3A1681663091125&amp;ei=cyQ8ZMaRB4eHqtsP2_aUuAM&amp;ved=0ahUKEwiGl7aZ667-AhWHg2oFHVs7BTcQ4dUDCAk&amp;uact=5&amp;oq=Tucson%2C+Ariz.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEB4QDTIICAAQigUQhgMyCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgNQAFgAYN4GaABwAHgAgAGPAYgBjwGSAQMwLjGYAQCgAQKgAQHAAQE&amp;sclient=gws-wiz-local">(520)
+                  791-4444</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Tulsa, Okla.</td>
+                  <td class=xl6828792><a href="https://www.google.com/search?q=tulsa+oklahoma+police+department+phone+number&rlz=1C1UEAD_enUS1001US1001&tbm=lcl&sxsrf=APwXEde0bx1zaj7_kU2gV8qAcvySALCTNw%3A1682736687120&ei=L4ZMZJ_2BrOwqtsPxrC78AU&oq=tulsa+police+department+phone+number&gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAEYATIFCAAQgAQyBggAEAcQHjIGCAAQBxAeMgYIABAIEB4yCAgAEIoFEIYDMggIABCKBRCGAzoECCMQJzoHCCMQsAIQJzoICAAQCBAHEB46BwgAEIoFEENQ-g5YnydglDhoAHAAeACAAWGIAaoJkgECMTeYAQCgAQHAAQE&sclient=gws-wiz-local#rlfi=hd:;si:;mv:[[36.286966199999995,-95.7307301],[35.9235124,-96.0244537]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:2">(918) 596-9222</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Virginia Beach, Va.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=%09Virginia+Beach%2C+Va.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdeUsgtGgPVfj9t-GEzT0qMC45s5Lw%3A1681663173450&amp;ei=xSQ8ZNqHG4enqtsPjc680AQ&amp;ved=0ahUKEwia_tbA667-AhWHk2oFHQ0nD0oQ4dUDCAk&amp;uact=5&amp;oq=%09Virginia+Beach%2C+Va.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBAgAEB4yCAgAEIoFEIYDMggIABCKBRCGAzIICAAQigUQhgMyCAgAEIoFEIYDOgQIIxAnOgYIABAeEA1QoAtYoAtg0BpoAHAAeACAAVCIAZEBkgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">&nbsp;(757)
+                  385-4377</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Washington, D.C.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Washington%2C+D.C.+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdfonEd-NuV6PD92qjF0YsHVX4qqNw%3A1681663220181&amp;ei=9CQ8ZJ3fCsesqtsPhpCZ-Ak&amp;ved=0ahUKEwidqfvW667-AhVHlmoFHQZIBp8Q4dUDCAk&amp;uact=5&amp;oq=Washington%2C+D.C.+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBQgAEIAEMggIABCKBRCGAzIICAAQigUQhgM6BAgjECc6BAgAEB5QgwZYgwZguQ5oAHAAeACAAUqIAY0BkgEBMpgBAKABAqABAcABAQ&amp;sclient=gws-wiz-local">(202)
+                  727-4383</a></td>
+                 </tr>
+                 <tr height=20 style='height:15.0pt'>
+                  <td height=20 class=xl1528792 style='height:15.0pt'>Wichita, Kan.</td>
+                  <td class=xl6528792><a
+                  href="https://www.google.com/search?q=Wichita%2C+Kan..+police+department+phone+number&amp;rlz=1C1UEAD_enUS1001US1001&amp;tbm=lcl&amp;sxsrf=APwXEdcTMV1OEVnhqifvXxHoqA5ZyqiCvQ%3A1681663268371&amp;ei=JCU8ZNmmFqGrqtsPuquV8Aw&amp;ved=0ahUKEwjZyPjt667-AhWhlWoFHbpVBc4Q4dUDCAk&amp;uact=5&amp;oq=Wichita%2C+Kan..+police+department+phone+number&amp;gs_lcp=Cg1nd3Mtd2l6LWxvY2FsEAMyBggAEB4QDTIICAAQigUQhgMyCAgAEIoFEIYDOgQIIxAnOgUIABCABFD2BFj2BGDCC2gAcAB4AIABT4gBnQGSAQEymAEAoAECoAEBwAEB&amp;sclient=gws-wiz-local">(316)
+                  268-4111</a></td>
+                 </tr>
+                 <![if supportMisalignedColumns]>
+                 <tr height=0 style='display:none'>
+                  <td width=194 style='width:146pt'></td>
+                  <td width=138 style='width:104pt'></td>
+                 </tr>
+                 <![endif]>
+                </table>
+                
+                </div>
+                
+        </div>
+
+    </div>
+</body>
+</html>

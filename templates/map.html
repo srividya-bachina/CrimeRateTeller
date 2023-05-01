@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_20a083f2c362c327536949306cd9d115 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_20a083f2c362c327536949306cd9d115" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_20a083f2c362c327536949306cd9d115 = L.map(
+                "map_20a083f2c362c327536949306cd9d115",
+                {
+                    center: [28.1889, -81.57218],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 4,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_81d0c9f7acf6c7820507a514bbd22000 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_20a083f2c362c327536949306cd9d115);
+        
+    
+            var marker_713f33ccdb402a5c01a20c0e63671562 = L.marker(
+                [30.3322, -81.6749],
+                {}
+            ).addTo(map_20a083f2c362c327536949306cd9d115);
+        
+    
+            marker_713f33ccdb402a5c01a20c0e63671562.bindTooltip(
+                `<div>
+                     Jacksonville
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5d48bdf9457d328a1df95cf071bc034b = L.marker(
+                [28.3565, -82.1942],
+                {}
+            ).addTo(map_20a083f2c362c327536949306cd9d115);
+        
+    
+            marker_5d48bdf9457d328a1df95cf071bc034b.bindTooltip(
+                `<div>
+                     Miami-Dade County
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3ed61e099c02cbb64e5c82631854fd9c = L.marker(
+                [28.3565, -82.1942],
+                {}
+            ).addTo(map_20a083f2c362c327536949306cd9d115);
+        
+    
+            var icon_6030bfd34437e98afde55ed259803c44 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_3ed61e099c02cbb64e5c82631854fd9c.setIcon(icon_6030bfd34437e98afde55ed259803c44);
+        
+    
+            marker_3ed61e099c02cbb64e5c82631854fd9c.bindTooltip(
+                `<div>
+                     Miami-Dade County
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8eab04f257a1a6c4e6624869f47386eb = L.marker(
+                [25.784, -80.2101],
+                {}
+            ).addTo(map_20a083f2c362c327536949306cd9d115);
+        
+    
+            marker_8eab04f257a1a6c4e6624869f47386eb.bindTooltip(
+                `<div>
+                     Miami
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dd0708e2408d5f95700290868216cc90 = L.marker(
+                [28.4773, -81.337],
+                {}
+            ).addTo(map_20a083f2c362c327536949306cd9d115);
+        
+    
+            marker_dd0708e2408d5f95700290868216cc90.bindTooltip(
+                `<div>
+                     Orlando
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0cb6b9654826a1f867e55a3cb2fc9343 = L.marker(
+                [27.9945, -82.4447],
+                {}
+            ).addTo(map_20a083f2c362c327536949306cd9d115);
+        
+    
+            marker_0cb6b9654826a1f867e55a3cb2fc9343.bindTooltip(
+                `<div>
+                     Tampa
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
